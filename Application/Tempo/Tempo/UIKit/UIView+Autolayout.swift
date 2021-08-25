@@ -45,7 +45,7 @@ extension UIView {
 
 extension UIViewController {
     public func pinRootSubview(_ subview: UIView) {
-        let views: [String: AnyObject] = ["subview": subview, "topGuide": topLayoutGuide, "bottomGuide": bottomLayoutGuide]
+        let views: [String: AnyObject] = ["subview": subview, "topGuide": view.safeAreaLayoutGuide.topAnchor, "bottomGuide": view.safeAreaLayoutGuide.bottomAnchor]
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views:views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[topGuide][subview][bottomGuide]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views))

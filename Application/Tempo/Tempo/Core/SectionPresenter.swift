@@ -28,7 +28,7 @@ public func == (lhs: CollectionViewSectionUpdate, rhs: CollectionViewSectionUpda
         return leftFromIndex == rightFromIndex && leftToIndex == rightToIndex && leftItemUpdates == rightItemUpdates
     case (.focus(let leftFocus), .focus(let rightFocus)):
         return leftFocus == rightFocus
-    case (.header(let leftUpdate), .header(let rightUpdate)):
+    case (.header(let leftUpdate, _), .header(let rightUpdate, _)):
         return leftUpdate == rightUpdate
     default:
         return false
@@ -54,7 +54,7 @@ public func == (lhs: CollectionViewItemUpdate, rhs: CollectionViewItemUpdate) ->
     }
 }
 
-public protocol SectionPresenterAdapter: class {
+public protocol SectionPresenterAdapter: AnyObject {
     func applyUpdates(_ updates: [CollectionViewSectionUpdate], viewState: TempoSectionedViewState)
 }
 

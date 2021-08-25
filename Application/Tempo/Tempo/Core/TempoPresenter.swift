@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol TempoPresenterType: class {
+public protocol TempoPresenterType: AnyObject {
     func present(_ viewState: TempoViewState)
 }
 
