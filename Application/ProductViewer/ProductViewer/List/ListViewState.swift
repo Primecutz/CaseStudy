@@ -9,10 +9,7 @@ import Tempo
 
 struct ListViewState: TempoViewState, TempoSectionedViewState {
     var listItems: [TempoViewStateItem]
-    
-    var sections: [TempoViewStateItem] {
-        return listItems
-    }
+    var sections: [TempoViewStateItem] { return listItems }
 }
 
 struct ListItemViewState: TempoViewStateItem, Equatable {

@@ -13,14 +13,14 @@ class ListCoordinator: TempoCoordinator {
     // Class Properties
     let dispatcher = Dispatcher()
     
-    // MARK: Presenters, view controllers, view state.
+    // Presenters, view controllers, view state.
     var presenters = [TempoPresenterType]() {
         didSet {
             updateUI()
         }
     }
     
-    private var viewState: ListViewState {
+    var viewState: ListViewState {
         didSet {
             updateUI()
         }
@@ -30,7 +30,7 @@ class ListCoordinator: TempoCoordinator {
         return ListViewController.viewControllerFor(coordinator: self)
     }()
     
-    // MARK: Init
+    // Object Lifecycle
     required init() {
         viewState = ListViewState(listItems: [])
         updateState()
@@ -39,7 +39,7 @@ class ListCoordinator: TempoCoordinator {
 
 }
 
-// MARK: ListCoordinator
+// MARK: Private Functions
 
 extension ListCoordinator {
     

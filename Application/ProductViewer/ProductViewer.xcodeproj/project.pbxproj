@@ -15,7 +15,6 @@
 		5BEF08141D663304006BF0C0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08131D663304006BF0C0 /* ListViewController.swift */; };
 		5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08151D66333C006BF0C0 /* ListViewState.swift */; };
 		5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF081E1D663598006BF0C0 /* ProductListView.swift */; };
-		5BEF08211D6635B2006BF0C0 /* ProductListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BEF08201D6635B2006BF0C0 /* ProductListView.xib */; };
 		C5C0528B23886699002A586D /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		5BEF08131D663304006BF0C0 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5BEF08151D66333C006BF0C0 /* ListViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewState.swift; sourceTree = "<group>"; };
 		5BEF081E1D663598006BF0C0 /* ProductListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
-		5BEF08201D6635B2006BF0C0 /* ProductListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductListView.xib; sourceTree = "<group>"; };
 		C5C0528723886616002A586D /* Tempo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tempo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				5BEF081E1D663598006BF0C0 /* ProductListView.swift */,
-				5BEF08201D6635B2006BF0C0 /* ProductListView.xib */,
 				5B302A8E1D663A8500FA2FFD /* ProductListComponent.swift */,
 			);
 			path = Components;
@@ -190,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B259CD11D6630E0001D755F /* Assets.xcassets in Resources */,
-				5BEF08211D6635B2006BF0C0 /* ProductListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
