@@ -61,6 +61,16 @@ extension ListCoordinator {
             alert.addAction( UIAlertAction(title: "OK", style: .cancel, handler: nil) )
             self?.viewController.present(alert, animated: true, completion: nil)
         }
+        
+        dispatcher.addObserver(ShipButtonPressed.self) { e in
+            // Todo: Add to cart
+            print("Ship button pressed")
+        }
+        
+        dispatcher.addObserver(B2ButtonPressed.self) { e in
+            // Todo: Add to wish list?
+            print("B2 button pressed")
+        }
     }
     
 }

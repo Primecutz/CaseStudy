@@ -11,14 +11,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let listCoordinator = ListCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        let listCoordinator = ListCoordinator()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = listCoordinator.viewController
         window?.makeKeyAndVisible()
-        
         return true
     }
 

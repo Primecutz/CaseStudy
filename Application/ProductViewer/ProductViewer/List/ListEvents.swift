@@ -8,3 +8,5 @@
 import Tempo
 
 struct ListItemPressed: EventType {}
+struct ShipButtonPressed: EventType {}
+struct B2ButtonPressed: EventType {}

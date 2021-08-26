@@ -9,7 +9,7 @@ import UIKit
 import Tempo
 
 final class ProductListView: UIView {
-    
+
     // View Properties
     private lazy var containerView: UIView = {
         let containerView = UIView()
@@ -25,7 +25,7 @@ final class ProductListView: UIView {
         productImageView.contentMode = .scaleAspectFill
         return productImageView
     }()
-
+    
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 24)
@@ -50,7 +50,7 @@ final class ProductListView: UIView {
         return priceLabel
     }()
     
-    private lazy var shipButton: UIButton = {
+    lazy var shipButton: UIButton = {
         let shipButton = UIButton(type: .system)
         shipButton.setTitle("ship", for: .normal)
         shipButton.setTitleColor(.targetJetBlackColor, for: .normal)
@@ -160,6 +160,14 @@ extension ProductListView {
         titleLabel.text = item.title
         priceLabel.text = item.price
         productImageView.image = item.image
+    }
+    
+    func addShipButtonTarget(_ target: Any?, action: Selector) {
+        shipButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func addB2ButtonTarget(_ target: Any?, action: Selector) {
+        b2Button.addTarget(target, action: action, for: .touchUpInside)
     }
     
 }
