@@ -8,48 +8,54 @@
 import Foundation
 import Tempo
 
-/*
- Coordinator for the product list
- */
 class ListCoordinator: TempoCoordinator {
     
-    // MARK: Presenters, view controllers, view state.
+    // Class Properties
+    let dispatcher = Dispatcher()
     
+    // MARK: Presenters, view controllers, view state.
     var presenters = [TempoPresenterType]() {
         didSet {
             updateUI()
         }
     }
     
-    fileprivate var viewState: ListViewState {
+    private var viewState: ListViewState {
         didSet {
             updateUI()
         }
     }
-    
-    fileprivate func updateUI() {
-        for presenter in presenters {
-            presenter.present(viewState)
-        }
-    }
-    
-    let dispatcher = Dispatcher()
     
     lazy var viewController: ListViewController = {
         return ListViewController.viewControllerFor(coordinator: self)
     }()
     
     // MARK: Init
-    
     required init() {
         viewState = ListViewState(listItems: [])
         updateState()
         registerListeners()
     }
+
+}
+
+// MARK: ListCoordinator
+
+extension ListCoordinator {
     
-    // MARK: ListCoordinator
+    private func updateUI() {
+        for presenter in presenters {
+            presenter.present(viewState)
+        }
+    }
     
-    fileprivate func registerListeners() {
+    private func updateState() {
+        viewState.listItems = (1..<10).map { index in
+            ListItemViewState(title: "Puppies!!!", price: "$9.99", image: UIImage(named: "\(index)"))
+        }
+    }
+    
+    private func registerListeners() {
         dispatcher.addObserver(ListItemPressed.self) { [weak self] e in
             let alert = UIAlertController(title: "Item selected!", message: "🐶", preferredStyle: .alert)
             alert.addAction( UIAlertAction(title: "OK", style: .cancel, handler: nil) )
@@ -57,9 +63,4 @@ class ListCoordinator: TempoCoordinator {
         }
     }
     
-    func updateState() {
-        viewState.listItems = (1..<10).map { index in
-            ListItemViewState(title: "Puppies!!!", price: "$9.99", image: UIImage(named: "\(index)"))
-        }
-    }
 }
