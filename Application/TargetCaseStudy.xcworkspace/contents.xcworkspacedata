@@ -5,6 +5,12 @@
       location = "group:ProductViewer/ProductViewer.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Domain/Domain.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DataSource/DataSource.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Tempo/Tempo.xcodeproj">
    </FileRef>
 </Workspace>

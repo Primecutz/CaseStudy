@@ -16,6 +16,8 @@
 		5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08151D66333C006BF0C0 /* ListViewState.swift */; };
 		5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF081E1D663598006BF0C0 /* ProductListView.swift */; };
 		C5C0528B23886699002A586D /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; };
+		CB978ADC26D85A57008BD020 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978ADB26D85A57008BD020 /* Domain.framework */; };
+		CB978AF526D85B08008BD020 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978AF426D85B08008BD020 /* DataSource.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		5BEF08151D66333C006BF0C0 /* ListViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewState.swift; sourceTree = "<group>"; };
 		5BEF081E1D663598006BF0C0 /* ProductListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		C5C0528723886616002A586D /* Tempo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tempo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB978ADB26D85A57008BD020 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB978AF426D85B08008BD020 /* DataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB978ADC26D85A57008BD020 /* Domain.framework in Frameworks */,
+				CB978AF526D85B08008BD020 /* DataSource.framework in Frameworks */,
 				C5C0528B23886699002A586D /* Tempo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +81,8 @@
 		5B518D921F1010E1005C013B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB978AF426D85B08008BD020 /* DataSource.framework */,
+				CB978ADB26D85A57008BD020 /* Domain.framework */,
 				C5C0528723886616002A586D /* Tempo.framework */,
 			);
 			name = Frameworks;
