@@ -1,6 +1,6 @@
 import UIKit
 import Tempo
-import XCPlayground
+import PlaygroundSupport
 
 /*:
 ## Tempo
@@ -44,7 +44,7 @@ class NamePresenter: TempoPresenter {
         self.label = label
     }
 
-    func present(viewState: NameViewState) {
+    func present(_ viewState: NameViewState) {
         label.text = "Name: \(viewState.currentName)"
     }
 }
@@ -88,8 +88,8 @@ Easy enough, but the `SectionPresenter` still needs to know how to configure the
 That's where components come in. A section presenter uses its registered components to update individual cells within a given section.  Simply subclass `Component` and implement `configureView(view:item:)` with the corresponding generic parameter types and most of the boilerplate is handled for you. 
 */
 final class MyView: UIView, ReusableView {
-    @nonobjc static let reuseIdentifier = "🍌"
-    private lazy var myLabel: UILabel = {
+    static var reuseID: String = "🍌"
+    lazy var myLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addAndPinSubview(label)
@@ -98,11 +98,16 @@ final class MyView: UIView, ReusableView {
 }
 
 class CounterComponent: Component {
+    
     var dispatcher: Dispatcher?
 
-    func configureView(view: MyView, item: CounterSection) {
+    func configureView(_ view: MyView, item: CounterSection) {
         view.myLabel.text = "Count: \(item.count)"
     }
+    
+    func registerWrapper(_ container: ReusableViewContainer) {}
+    func registerWrapper(_ container: ReusableViewContainer, forSupplementaryViewOfKind kind: String) {}
+    func focusAccessibility(_ view: MyView, item: CounterSection) {}
 }
 
 /*:
@@ -168,13 +173,19 @@ class Coordinator {
 
 let viewController = UICollectionViewController(collectionViewLayout: HarmonyLayout())
 viewController.collectionView?.backgroundColor = UIColor.targetFadeAwayGrayColor
+viewController.view.frame = CGRect(x: 0, y: 0, width: 300, height: 600)
+
+let myView = MyView()
+let counterSection = CounterSection(count: 5)
+let counterComponent = CounterComponent()
+counterComponent.configureView(myView, item: counterSection)
 
 let coordinator = Coordinator()
-let componentProvider = ComponentProvider(components: [CounterComponent()], dispatcher: coordinator.dispatcher)
+let componentProvider = ComponentProvider(components: [counterComponent], dispatcher: coordinator.dispatcher)
 let adapter = CollectionViewAdapter(collectionView: viewController.collectionView!, componentProvider: componentProvider)
 let sectionPresenter = SectionPresenter(adapter: adapter)
 
-XCPlaygroundPage.currentPage.liveView = viewController.view
+PlaygroundPage.current.liveView = viewController.view
 
 coordinator.presenters = [sectionPresenter]
 
