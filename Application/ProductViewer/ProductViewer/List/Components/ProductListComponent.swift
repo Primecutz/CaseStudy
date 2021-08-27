@@ -13,33 +13,34 @@ class ProductListComponent: Component {
 
     func prepareView(_ view: ProductListView, item: ListItemViewState) {
         // Called on first view or ProductListView
-        view.addShipButtonTarget(self, action: #selector(shipButtonPressed))
-        view.addB2ButtonTarget(self, action: #selector(b2ButtonPressed))
     }
     
     func configureView(_ view: ProductListView, item: ListItemViewState) {
         view.configureViewWithItem(item)
+        view.delegate = self
     }
     
     func selectView(_ view: ProductListView, item: ListItemViewState) {
-        dispatcher?.triggerEvent(ListItemPressed())
+        dispatcher?.triggerEvent(ListItemPressed(item: item))
     }
     
 }
 
-// MARK: Button Actions
+// MARK: ProductListViewDelegate
 
-extension ProductListComponent {
+extension ProductListComponent: ProductListViewDelegate {
     
-    @objc private func shipButtonPressed() {
-        dispatcher?.triggerEvent(ShipButtonPressed())
+    func addItemToShippingCart(_ item: ListItemViewState) {
+        dispatcher?.triggerEvent(ShipButtonPressed(item: item))
     }
     
-    @objc private func b2ButtonPressed() {
-        dispatcher?.triggerEvent(B2ButtonPressed())
+    func addItemToWishList(_ item: ListItemViewState) {
+        dispatcher?.triggerEvent(B2ButtonPressed(item: item))
     }
     
 }
+
+// MARK: HarmonyLayoutComponent
 
 extension ProductListComponent: HarmonyLayoutComponent {
     

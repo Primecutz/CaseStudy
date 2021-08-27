@@ -8,9 +8,7 @@
 import Foundation
 
 struct APIKey {
-    
     static let errorCode = "code"
     static let errorMessage = "message"
     static let products = "products"
-    
 }

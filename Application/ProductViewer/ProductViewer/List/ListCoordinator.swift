@@ -7,10 +7,12 @@
 
 import Foundation
 import Tempo
+import Domain
 
 class ListCoordinator: TempoCoordinator {
     
     // Class Properties
+    private let productListInteractor: ProductListInteractor
     let dispatcher = Dispatcher()
     
     // Presenters, view controllers, view state.
@@ -20,7 +22,7 @@ class ListCoordinator: TempoCoordinator {
         }
     }
     
-    var viewState: ListViewState {
+    var viewState = ListViewState(listItems: []) {
         didSet {
             updateUI()
         }
@@ -31,8 +33,8 @@ class ListCoordinator: TempoCoordinator {
     }()
     
     // Object Lifecycle
-    required init() {
-        viewState = ListViewState(listItems: [])
+    required init(_ productListInteractor: ProductListInteractor) {
+        self.productListInteractor = productListInteractor
         updateState()
         registerListeners()
     }
@@ -50,26 +52,49 @@ extension ListCoordinator {
     }
     
     private func updateState() {
-        viewState.listItems = (1..<10).map { index in
-            ListItemViewState(title: "Puppies!!!", price: "$9.99", image: UIImage(named: "\(index)"))
-        }
+        fetchDeals()
     }
     
     private func registerListeners() {
-        dispatcher.addObserver(ListItemPressed.self) { [weak self] e in
+        dispatcher.addObserver(ListItemPressed.self) { [weak self] event in
             let alert = UIAlertController(title: "Item selected!", message: "🐶", preferredStyle: .alert)
             alert.addAction( UIAlertAction(title: "OK", style: .cancel, handler: nil) )
             self?.viewController.present(alert, animated: true, completion: nil)
         }
         
-        dispatcher.addObserver(ShipButtonPressed.self) { e in
-            // Todo: Add to cart
-            print("Ship button pressed")
+        dispatcher.addObserver(ShipButtonPressed.self) { event in
+            // Todo: Add to shipping cart
+            let itemName = event.item.title
+            print("Added \(itemName) to shipping cart")
         }
         
-        dispatcher.addObserver(B2ButtonPressed.self) { e in
-            // Todo: Add to wish list?
-            print("B2 button pressed")
+        dispatcher.addObserver(B2ButtonPressed.self) { event in
+            // Todo: Add to wish list
+            let itemName = event.item.title
+            print("Added \(itemName) to wish list")
+        }
+    }
+    
+}
+
+// MARK: API Calls
+
+extension ListCoordinator {
+    
+    private func fetchDeals() {
+        productListInteractor.execute { [weak self] result in
+            switch result {
+            case .success(let productEntities):
+                self?.viewState.listItems = productEntities.compactMap {
+                    if let displayPrice = $0.regularPrice?.displayString {
+                        return ListItemViewState(id: $0.id, title: $0.title, description: $0.description, price: displayPrice, imageUrl: $0.imageUrl)
+                    } else {
+                        return nil
+                    }
+                }
+            case .failure(let errorMessageEntity):
+                print(errorMessageEntity.message)
+            }
         }
     }
     

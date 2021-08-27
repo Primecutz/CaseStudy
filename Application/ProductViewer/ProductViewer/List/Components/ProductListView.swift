@@ -9,6 +9,13 @@ import UIKit
 import Tempo
 
 final class ProductListView: UIView {
+    
+    // Class Properties
+    private var item: ListItemViewState?
+    private var imageDownloadTask: URLSessionDataTask?
+    
+    // Delegate Properties
+    weak var delegate: ProductListViewDelegate?
 
     // View Properties
     private lazy var containerView: UIView = {
@@ -55,6 +62,8 @@ final class ProductListView: UIView {
         shipButton.setTitle("ship", for: .normal)
         shipButton.setTitleColor(.targetJetBlackColor, for: .normal)
         shipButton.titleLabel?.font = .systemFont(ofSize: 18)
+        shipButton.addTarget(self, action: #selector(shipButtonPressed), for: .touchUpInside)
+        shipButton.contentHorizontalAlignment = .right
         return shipButton
     }()
     
@@ -71,6 +80,7 @@ final class ProductListView: UIView {
         b2Button.setTitle("B2", for: .normal)
         b2Button.setTitleColor(.targetBullseyeRedColor, for: .normal)
         b2Button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        b2Button.addTarget(self, action: #selector(b2ButtonPressed), for: .touchUpInside)
         b2Button.layer.cornerRadius = buttonHeightConstant / 2
         b2Button.layer.borderColor = UIColor.targetStrokeGrayColor.cgColor
         b2Button.layer.borderWidth = 2
@@ -124,7 +134,7 @@ extension ProductListView {
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: containerView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
             
             dividerLineView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             dividerLineView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor),
@@ -134,10 +144,11 @@ extension ProductListView {
             priceLabel.topAnchor.constraint(equalTo: containerView.centerYAnchor),
             priceLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             priceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: shipButton.leadingAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: shipButton.leadingAnchor, constant: -15),
             
             shipButton.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
             shipButton.heightAnchor.constraint(equalToConstant: buttonHeightConstant),
+            shipButton.widthAnchor.constraint(equalTo: shipButton.heightAnchor),
             
             orLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
             orLabel.leadingAnchor.constraint(equalTo: shipButton.trailingAnchor, constant: 5),
@@ -157,22 +168,43 @@ extension ProductListView {
 extension ProductListView {
     
     func configureViewWithItem(_ item: ListItemViewState) {
+        self.item = item
         titleLabel.text = item.title
         priceLabel.text = item.price
-        productImageView.image = item.image
-    }
-    
-    func addShipButtonTarget(_ target: Any?, action: Selector) {
-        shipButton.addTarget(target, action: action, for: .touchUpInside)
-    }
-    
-    func addB2ButtonTarget(_ target: Any?, action: Selector) {
-        b2Button.addTarget(target, action: action, for: .touchUpInside)
+        imageDownloadTask = imageDownloadTask == nil ? productImageView.loadImageFrom(item.imageUrl) : nil
     }
     
 }
 
+// MARK: Private Functions
+
+extension ProductListView {
+    
+    @objc private func shipButtonPressed() {
+        guard let item = item else { return }
+        delegate?.addItemToShippingCart(item)
+    }
+    
+    @objc private func b2ButtonPressed() {
+        guard let item = item else { return }
+        delegate?.addItemToWishList(item)
+    }
+    
+}
+
+// MARK: ReusableView
+
 extension ProductListView: ReusableView {
     @nonobjc static let reuseID = "ProductListViewIdentifier"
-    @nonobjc func prepareForReuse() {}
+    
+    @nonobjc func prepareForReuse() {
+        imageDownloadTask?.cancel()
+        imageDownloadTask = nil
+        productImageView.image = nil
+    }
+}
+
+protocol ProductListViewDelegate: AnyObject {
+    func addItemToShippingCart(_ item: ListItemViewState)
+    func addItemToWishList(_ item: ListItemViewState)
 }

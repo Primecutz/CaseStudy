@@ -8,9 +8,7 @@
 import Foundation
 
 struct HTTPMethod {
-    
     static let post = "POST"
     static let get = "GET"
     static let delete = "DELETE"
-    
 }

@@ -7,6 +7,15 @@
 
 import Tempo
 
-struct ListItemPressed: EventType {}
-struct ShipButtonPressed: EventType {}
-struct B2ButtonPressed: EventType {}
+struct ListItemPressed: EventType {
+    let item: ListItemViewState
+}
+
+struct ShipButtonPressed: EventType {
+    let item: ListItemViewState
+    
+}
+
+struct B2ButtonPressed: EventType {
+    let item: ListItemViewState
+}

@@ -8,8 +8,6 @@
 import Foundation
 
 struct APIEndPoint {
-    
     static let deals = "/deals"
-    
 }
 

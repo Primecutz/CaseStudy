@@ -13,10 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let listCoordinator = ListCoordinator()
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = listCoordinator.viewController
-        window?.makeKeyAndVisible()
+        presentMainApp()
         return true
     }
 
@@ -40,8 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        UIImageView.imageCache.removeAllObjects() // Clear cache when terminated to clear up app space
     }
 
+}
 
+// Private Functions
+
+extension AppDelegate {
+    
+    private func presentMainApp() {
+        let listCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = listCoordinator.viewController
+        window?.makeKeyAndVisible()
+    }
+    
 }
 

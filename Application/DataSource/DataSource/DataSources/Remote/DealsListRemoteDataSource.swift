@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PostRemoteDataSource: BaseRemoteDataSource, DealsListRemoteDataSourceInterface {
+public class DealsListRemoteDataSource: BaseRemoteDataSource, DealsListRemoteDataSourceInterface {
     
     public func fetchDealsList(completion: @escaping ProductsHandler) {
         let endpoint = APIEndPoint.deals
