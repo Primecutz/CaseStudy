@@ -15,25 +15,25 @@ public class ProductDetailInteractor: ProductDetailInteractorInterface {
         self.productDetailDomainDataSourceInterface = productDetailDomainDataSourceInterface
     }
     
-    public func execute(fetch completion: @escaping ProductHandler) {
-        productDetailDomainDataSourceInterface.execute(fetch: { result in
+    public func execute(fetchProduct id: Int, completion: @escaping ProductHandler) {
+        productDetailDomainDataSourceInterface.execute(fetchProduct: id) { result in
             switch result {
             case .success(let productEntity):
                 completion(.success(productEntity))
             case .failure(let error):
                 completion(.failure(error))
             }
-        })
+        }
     }
     
 }
 
 public protocol ProductDetailInteractorInterface {
-    typealias ProductHandler = (Result<ProductEntity, Error>) -> Void
-    func execute(fetch completion: @escaping ProductHandler)
+    typealias ProductHandler = (Result<ProductEntity?, ErrorMessageEntity>) -> Void
+    func execute(fetchProduct id: Int, completion: @escaping ProductHandler)
 }
 
 public protocol ProductDetailDomainDataSourceInterface {
-    typealias ProductHandler = (Result<ProductEntity, Error>) -> Void
-    func execute(fetch completion: @escaping ProductHandler)
+    typealias ProductHandler = (Result<ProductEntity?, ErrorMessageEntity>) -> Void
+    func execute(fetchProduct id: Int, completion: @escaping ProductHandler)
 }

@@ -8,12 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		CB978AEE26D85A82008BD020 /* DataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = CB978AEC26D85A82008BD020 /* DataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB978B0B26D862FB008BD020 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B0A26D862FB008BD020 /* Product.swift */; };
+		CB978B0D26D86336008BD020 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B0C26D86336008BD020 /* Price.swift */; };
+		CB978B1126D867F9008BD020 /* BaseRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1026D867F9008BD020 /* BaseRemoteDataSource.swift */; };
+		CB978B1326D87239008BD020 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1226D87239008BD020 /* ErrorMessage.swift */; };
+		CB978B1726D8737D008BD020 /* DealsListRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1626D8737D008BD020 /* DealsListRemoteDataSource.swift */; };
+		CB978B1926D873C9008BD020 /* DealsDetailRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1826D873C9008BD020 /* DealsDetailRemoteDataSource.swift */; };
+		CB978B1C26D87561008BD020 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1B26D87561008BD020 /* APIKey.swift */; };
+		CB978B1E26D87568008BD020 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1D26D87568008BD020 /* APIEndPoint.swift */; };
+		CB978B2026D8757C008BD020 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1F26D8757C008BD020 /* HTTPMethod.swift */; };
+		CB978B2226D8796F008BD020 /* DealsListDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2126D8796F008BD020 /* DealsListDataRepository.swift */; };
+		CB978B2426D87C43008BD020 /* DealsDetailDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2326D87C43008BD020 /* DealsDetailDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB978AE926D85A82008BD020 /* DataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB978AEC26D85A82008BD020 /* DataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		CB978AED26D85A82008BD020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB978B0A26D862FB008BD020 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		CB978B0C26D86336008BD020 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		CB978B1026D867F9008BD020 /* BaseRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteDataSource.swift; sourceTree = "<group>"; };
+		CB978B1226D87239008BD020 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		CB978B1626D8737D008BD020 /* DealsListRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsListRemoteDataSource.swift; sourceTree = "<group>"; };
+		CB978B1826D873C9008BD020 /* DealsDetailRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsDetailRemoteDataSource.swift; sourceTree = "<group>"; };
+		CB978B1B26D87561008BD020 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		CB978B1D26D87568008BD020 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		CB978B1F26D8757C008BD020 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		CB978B2126D8796F008BD020 /* DealsListDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsListDataRepository.swift; sourceTree = "<group>"; };
+		CB978B2326D87C43008BD020 /* DealsDetailDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsDetailDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +68,69 @@
 		CB978AEB26D85A82008BD020 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				CB978B0726D862A9008BD020 /* Models */,
+				CB978B0826D862AE008BD020 /* Repositories */,
+				CB978B0926D862BE008BD020 /* DataSources */,
 				CB978AEC26D85A82008BD020 /* DataSource.h */,
 				CB978AED26D85A82008BD020 /* Info.plist */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		CB978B0726D862A9008BD020 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB978B0A26D862FB008BD020 /* Product.swift */,
+				CB978B0C26D86336008BD020 /* Price.swift */,
+				CB978B1226D87239008BD020 /* ErrorMessage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CB978B0826D862AE008BD020 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CB978B2126D8796F008BD020 /* DealsListDataRepository.swift */,
+				CB978B2326D87C43008BD020 /* DealsDetailDataRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CB978B0926D862BE008BD020 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				CB978B0E26D867B8008BD020 /* Local */,
+				CB978B0F26D867C1008BD020 /* Remote */,
+				CB978B1A26D8753D008BD020 /* Constants */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		CB978B0E26D867B8008BD020 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		CB978B0F26D867C1008BD020 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				CB978B1026D867F9008BD020 /* BaseRemoteDataSource.swift */,
+				CB978B1626D8737D008BD020 /* DealsListRemoteDataSource.swift */,
+				CB978B1826D873C9008BD020 /* DealsDetailRemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		CB978B1A26D8753D008BD020 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CB978B1B26D87561008BD020 /* APIKey.swift */,
+				CB978B1D26D87568008BD020 /* APIEndPoint.swift */,
+				CB978B1F26D8757C008BD020 /* HTTPMethod.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +175,7 @@
 				TargetAttributes = {
 					CB978AE826D85A82008BD020 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -130,6 +212,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB978B1326D87239008BD020 /* ErrorMessage.swift in Sources */,
+				CB978B0B26D862FB008BD020 /* Product.swift in Sources */,
+				CB978B1C26D87561008BD020 /* APIKey.swift in Sources */,
+				CB978B1E26D87568008BD020 /* APIEndPoint.swift in Sources */,
+				CB978B1126D867F9008BD020 /* BaseRemoteDataSource.swift in Sources */,
+				CB978B2026D8757C008BD020 /* HTTPMethod.swift in Sources */,
+				CB978B2426D87C43008BD020 /* DealsDetailDataRepository.swift in Sources */,
+				CB978B1926D873C9008BD020 /* DealsDetailRemoteDataSource.swift in Sources */,
+				CB978B2226D8796F008BD020 /* DealsListDataRepository.swift in Sources */,
+				CB978B0D26D86336008BD020 /* Price.swift in Sources */,
+				CB978B1726D8737D008BD020 /* DealsListRemoteDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +354,7 @@
 		CB978AF226D85A82008BD020 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = DV7J9CKA6A;
@@ -277,6 +371,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.target.DataSource;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,6 +380,7 @@
 		CB978AF326D85A82008BD020 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = DV7J9CKA6A;

@@ -12,6 +12,7 @@
 		CB978AFF26D85D14008BD020 /* PriceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978AFE26D85D14008BD020 /* PriceEntity.swift */; };
 		CB978B0226D85E4C008BD020 /* ProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B0126D85E4C008BD020 /* ProductListInteractor.swift */; };
 		CB978B0426D860F3008BD020 /* ProductDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B0326D860F3008BD020 /* ProductDetailInteractor.swift */; };
+		CB978B1526D87269008BD020 /* ErrorMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B1426D87269008BD020 /* ErrorMessageEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CB978AFE26D85D14008BD020 /* PriceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceEntity.swift; sourceTree = "<group>"; };
 		CB978B0126D85E4C008BD020 /* ProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListInteractor.swift; sourceTree = "<group>"; };
 		CB978B0326D860F3008BD020 /* ProductDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInteractor.swift; sourceTree = "<group>"; };
+		CB978B1426D87269008BD020 /* ErrorMessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				CB978AF926D85BC1008BD020 /* ProductEntity.swift */,
 				CB978AFE26D85D14008BD020 /* PriceEntity.swift */,
+				CB978B1426D87269008BD020 /* ErrorMessageEntity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				CB978AFF26D85D14008BD020 /* PriceEntity.swift in Sources */,
 				CB978B0426D860F3008BD020 /* ProductDetailInteractor.swift in Sources */,
+				CB978B1526D87269008BD020 /* ErrorMessageEntity.swift in Sources */,
 				CB978AFA26D85BC1008BD020 /* ProductEntity.swift in Sources */,
 				CB978B0226D85E4C008BD020 /* ProductListInteractor.swift in Sources */,
 			);

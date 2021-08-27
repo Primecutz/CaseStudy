@@ -29,11 +29,11 @@ public class ProductListInteractor: ProductListInteractorInterface {
 }
 
 public protocol ProductListInteractorInterface {
-    typealias ProductsHandler = (Result<[ProductEntity], Error>) -> Void
+    typealias ProductsHandler = (Result<[ProductEntity], ErrorMessageEntity>) -> Void
     func execute(fetch completion: @escaping ProductsHandler)
 }
 
 public protocol ProductListDomainDataSourceInterface {
-    typealias ProductsHandler = (Result<[ProductEntity], Error>) -> Void
+    typealias ProductsHandler = (Result<[ProductEntity], ErrorMessageEntity>) -> Void
     func execute(fetch completion: @escaping ProductsHandler)
 }
