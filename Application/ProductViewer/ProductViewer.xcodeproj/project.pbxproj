@@ -15,11 +15,14 @@
 		5BEF08141D663304006BF0C0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08131D663304006BF0C0 /* ListViewController.swift */; };
 		5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08151D66333C006BF0C0 /* ListViewState.swift */; };
 		5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF081E1D663598006BF0C0 /* ProductListView.swift */; };
-		C5C0528B23886699002A586D /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; };
 		CB044E7026DAE70E00623AAE /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB044E6F26DAE70E00623AAE /* CartViewController.swift */; };
 		CB22CBD126DAC9A700F42032 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22CBD026DAC9A700F42032 /* MainTabBarController.swift */; };
-		CB978ADC26D85A57008BD020 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978ADB26D85A57008BD020 /* Domain.framework */; };
-		CB978AF526D85B08008BD020 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978AF426D85B08008BD020 /* DataSource.framework */; };
+		CB651B8926DAF73600309580 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978AF426D85B08008BD020 /* DataSource.framework */; };
+		CB651B8A26DAF73600309580 /* DataSource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB978AF426D85B08008BD020 /* DataSource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB651B8C26DAF73800309580 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978ADB26D85A57008BD020 /* Domain.framework */; };
+		CB651B8D26DAF73800309580 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB978ADB26D85A57008BD020 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB651B8E26DAF73900309580 /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; };
+		CB651B8F26DAF73900309580 /* Tempo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CB978B2726D88116008BD020 /* DealsListDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2626D88116008BD020 /* DealsListDependencyInjector.swift */; };
 		CB978B2926D88180008BD020 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2826D88180008BD020 /* Configuration.swift */; };
 		CB978B2F26D8B953008BD020 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2E26D8B953008BD020 /* UIImageView+Extension.swift */; };
@@ -38,6 +41,22 @@
 		CBE86A9C26DA115C004528C0 /* LaunchScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE86A9B26DA115C004528C0 /* LaunchScreenViewState.swift */; };
 		CBE86A9E26DA1486004528C0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE86A9D26DA1486004528C0 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB651B8B26DAF73600309580 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB651B8D26DAF73800309580 /* Domain.framework in Embed Frameworks */,
+				CB651B8F26DAF73900309580 /* Tempo.framework in Embed Frameworks */,
+				CB651B8A26DAF73600309580 /* DataSource.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5B259CC61D6630E0001D755F /* ProductViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,9 +98,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB978ADC26D85A57008BD020 /* Domain.framework in Frameworks */,
-				CB978AF526D85B08008BD020 /* DataSource.framework in Frameworks */,
-				C5C0528B23886699002A586D /* Tempo.framework in Frameworks */,
+				CB651B8C26DAF73800309580 /* Domain.framework in Frameworks */,
+				CB651B8E26DAF73900309580 /* Tempo.framework in Frameworks */,
+				CB651B8926DAF73600309580 /* DataSource.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +276,7 @@
 				5B259CC21D6630E0001D755F /* Sources */,
 				5B259CC31D6630E0001D755F /* Frameworks */,
 				5B259CC41D6630E0001D755F /* Resources */,
+				CB651B8B26DAF73600309580 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
