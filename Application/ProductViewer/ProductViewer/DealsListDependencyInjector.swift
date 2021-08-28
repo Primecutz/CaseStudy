@@ -10,13 +10,13 @@ import Foundation
 import Domain
 import DataSource
 
-final class DealsListDependencyInjector {
+class DealsListDependencyInjector {
     
     func setupDealsListDependencies() -> ListCoordinator {
         let dealsListRemoteDataSource = DealsListRemoteDataSource(baseApiUrl: Configuration.baseApiUrl)
         let dealsListDataRepository = DealsListDataRepository(dealsListRemoteDataSource: dealsListRemoteDataSource)
         let productListInteractor = ProductListInteractor(productListDomainDataSourceInterface: dealsListDataRepository)
-        let listCoordinator = ListCoordinator(productListInteractor)
+        let listCoordinator = ListCoordinator(productListInteractor: productListInteractor)
         return listCoordinator
     }
     

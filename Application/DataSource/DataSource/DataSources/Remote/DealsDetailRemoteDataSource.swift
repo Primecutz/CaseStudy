@@ -10,7 +10,7 @@ import Foundation
 public class DealsDetailRemoteDataSource: BaseRemoteDataSource, DealsDetailRemoteDataSourceInterface {
     
     public func fetchDealsDetail(productId: Int, completion: @escaping ProductHandler) {
-        let endpoint = APIEndPoint.deals + "\\(productId)"
+        let endpoint = APIEndPoint.deals + "/" + "\(productId)"
         let method = HTTPMethod.get
         standardApiRequest(baseApiUrl: baseApiUrl, endpoint: endpoint, dataDict: nil, method: method) { result in
             switch result {

@@ -21,6 +21,13 @@
 		CB978B2726D88116008BD020 /* DealsListDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2626D88116008BD020 /* DealsListDependencyInjector.swift */; };
 		CB978B2926D88180008BD020 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2826D88180008BD020 /* Configuration.swift */; };
 		CB978B2F26D8B953008BD020 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2E26D8B953008BD020 /* UIImageView+Extension.swift */; };
+		CBDC299926D99DFF00B1233C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC299826D99DFF00B1233C /* DetailViewController.swift */; };
+		CBDC299B26D99EEB00B1233C /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC299A26D99EEB00B1233C /* DetailCoordinator.swift */; };
+		CBDC299E26D99F8200B1233C /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC299D26D99F8200B1233C /* ProductDetailView.swift */; };
+		CBDC29A026D99F8E00B1233C /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC299F26D99F8E00B1233C /* ProductDetailPresenter.swift */; };
+		CBDC29A226D9A7F600B1233C /* DetailViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC29A126D9A7F600B1233C /* DetailViewState.swift */; };
+		CBDC29A426D9A7FD00B1233C /* DetailEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC29A326D9A7FD00B1233C /* DetailEvents.swift */; };
+		CBDC29A626D9AA6300B1233C /* DealsDetailDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC29A526D9AA6300B1233C /* DealsDetailDependencyInjector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +47,13 @@
 		CB978B2626D88116008BD020 /* DealsListDependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsListDependencyInjector.swift; sourceTree = "<group>"; };
 		CB978B2826D88180008BD020 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		CB978B2E26D8B953008BD020 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		CBDC299826D99DFF00B1233C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Extensions/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		CBDC299A26D99EEB00B1233C /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailCoordinator.swift; path = Extensions/DetailCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		CBDC299D26D99F8200B1233C /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		CBDC299F26D99F8E00B1233C /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
+		CBDC29A126D9A7F600B1233C /* DetailViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewState.swift; sourceTree = "<group>"; };
+		CBDC29A326D9A7FD00B1233C /* DetailEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEvents.swift; sourceTree = "<group>"; };
+		CBDC29A526D9AA6300B1233C /* DealsDetailDependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsDetailDependencyInjector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +125,11 @@
 		5BEF08101D66328D006BF0C0 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				CBDC299C26D99F3900B1233C /* Components */,
+				CBDC299A26D99EEB00B1233C /* DetailCoordinator.swift */,
+				CBDC299826D99DFF00B1233C /* DetailViewController.swift */,
+				CBDC29A126D9A7F600B1233C /* DetailViewState.swift */,
+				CBDC29A326D9A7FD00B1233C /* DetailEvents.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -146,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CB978B2626D88116008BD020 /* DealsListDependencyInjector.swift */,
+				CBDC29A526D9AA6300B1233C /* DealsDetailDependencyInjector.swift */,
 			);
 			name = DependencyInjectors;
 			path = ProductViewer;
@@ -157,6 +177,15 @@
 				CB978B2E26D8B953008BD020 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CBDC299C26D99F3900B1233C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CBDC299D26D99F8200B1233C /* ProductDetailView.swift */,
+				CBDC299F26D99F8E00B1233C /* ProductDetailPresenter.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,16 +260,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBDC299926D99DFF00B1233C /* DetailViewController.swift in Sources */,
 				CB978B2F26D8B953008BD020 /* UIImageView+Extension.swift in Sources */,
 				5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */,
 				5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */,
+				CBDC29A026D99F8E00B1233C /* ProductDetailPresenter.swift in Sources */,
+				CBDC29A426D9A7FD00B1233C /* DetailEvents.swift in Sources */,
 				CB978B2726D88116008BD020 /* DealsListDependencyInjector.swift in Sources */,
 				CB978B2926D88180008BD020 /* Configuration.swift in Sources */,
 				5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */,
 				5B302A8F1D663A8500FA2FFD /* ProductListComponent.swift in Sources */,
 				5BEF08141D663304006BF0C0 /* ListViewController.swift in Sources */,
+				CBDC299B26D99EEB00B1233C /* DetailCoordinator.swift in Sources */,
+				CBDC299E26D99F8200B1233C /* ProductDetailView.swift in Sources */,
 				5BEF08121D6632EC006BF0C0 /* ListCoordinator.swift in Sources */,
+				CBDC29A626D9AA6300B1233C /* DealsDetailDependencyInjector.swift in Sources */,
 				5B2675A21D674B400015A238 /* ListEvents.swift in Sources */,
+				CBDC29A226D9A7F600B1233C /* DetailViewState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

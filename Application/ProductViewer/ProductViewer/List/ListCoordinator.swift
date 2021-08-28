@@ -33,7 +33,7 @@ class ListCoordinator: TempoCoordinator {
     }()
     
     // Object Lifecycle
-    required init(_ productListInteractor: ProductListInteractor) {
+    required init(productListInteractor: ProductListInteractor) {
         self.productListInteractor = productListInteractor
         updateState()
         registerListeners()
@@ -57,15 +57,16 @@ extension ListCoordinator {
     
     private func registerListeners() {
         dispatcher.addObserver(ListItemPressed.self) { [weak self] event in
-            let alert = UIAlertController(title: "Item selected!", message: "🐶", preferredStyle: .alert)
-            alert.addAction( UIAlertAction(title: "OK", style: .cancel, handler: nil) )
-            self?.viewController.present(alert, animated: true, completion: nil)
+            let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
+            detailCoordinator.productId = event.item.id
+            let detailVC = detailCoordinator.viewController
+            self?.viewController.present(detailVC, animated: true)
         }
         
         dispatcher.addObserver(ShipButtonPressed.self) { event in
             // Todo: Add to shipping cart
             let itemName = event.item.title
-            print("Added \(itemName) to shipping cart")
+            print("Added \(itemName) to shopping cart")
         }
         
         dispatcher.addObserver(B2ButtonPressed.self) { event in

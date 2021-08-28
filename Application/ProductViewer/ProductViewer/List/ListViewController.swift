@@ -19,16 +19,16 @@ class ListViewController: UIViewController {
     }
     
     // View Properties
-    private lazy var collectionView: UICollectionView = {
+    private lazy var listCollectionView: UICollectionView = {
         let harmonyLayout = HarmonyLayout()
         harmonyLayout.collectionViewMargins = HarmonyLayoutMargins(top: .narrow, right: .none, bottom: .narrow, left: .none)
         harmonyLayout.defaultSectionMargins = HarmonyLayoutMargins(top: .narrow, right: .none, bottom: .none, left: .none)
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: harmonyLayout)
-        collectionView.backgroundColor = .targetFadeAwayGrayColor
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.alwaysBounceVertical = true
-        collectionView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
-        return collectionView
+        let listCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: harmonyLayout)
+        listCollectionView.backgroundColor = .targetFadeAwayGrayColor
+        listCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        listCollectionView.alwaysBounceVertical = true
+        listCollectionView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+        return listCollectionView
     }()
     
     // View Lifecycle
@@ -55,14 +55,14 @@ class ListViewController: UIViewController {
 extension ListViewController {
     
     private func setupViews() {
-        title = "checkout"
-        view.addAndPinSubview(collectionView)
+        self.view.backgroundColor = .white
+        self.view.addAndPinSubview(listCollectionView)
     }
     
     private func updateViews() {
         let components: [ComponentType] = [ProductListComponent()]
         let componentProvider = ComponentProvider(components: components, dispatcher: coordinator.dispatcher)
-        let collectionViewAdapter = CollectionViewAdapter(collectionView: collectionView, componentProvider: componentProvider)
+        let collectionViewAdapter = CollectionViewAdapter(collectionView: listCollectionView, componentProvider: componentProvider)
         let sectionPresenter = SectionPresenter(adapter: collectionViewAdapter)
         coordinator.presenters = [sectionPresenter]
     }

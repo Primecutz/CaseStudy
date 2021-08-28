@@ -13,7 +13,6 @@ struct ListItemPressed: EventType {
 
 struct ShipButtonPressed: EventType {
     let item: ListItemViewState
-    
 }
 
 struct B2ButtonPressed: EventType {

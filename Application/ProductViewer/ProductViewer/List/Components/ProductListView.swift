@@ -8,7 +8,7 @@
 import UIKit
 import Tempo
 
-final class ProductListView: UIView {
+class ProductListView: UIView {
     
     // Class Properties
     private var item: ListItemViewState?
@@ -57,7 +57,7 @@ final class ProductListView: UIView {
         return priceLabel
     }()
     
-    lazy var shipButton: UIButton = {
+    private lazy var shipButton: UIButton = {
         let shipButton = UIButton(type: .system)
         shipButton.setTitle("ship", for: .normal)
         shipButton.setTitleColor(.targetJetBlackColor, for: .normal)
@@ -108,6 +108,8 @@ final class ProductListView: UIView {
 extension ProductListView {
 
     private func setupViews() {
+        self.backgroundColor = .clear
+        
         [containerView].forEach {
             self.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
