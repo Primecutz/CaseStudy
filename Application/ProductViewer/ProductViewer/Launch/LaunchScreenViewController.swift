@@ -54,19 +54,10 @@ class LaunchScreenViewController: UIViewController {
 extension LaunchScreenViewController {
     
     private func setupViews() {
-        self.view.backgroundColor = .targetStarkWhiteColor
+        self.view.backgroundColor = .targetFadeAwayGrayColor
         
-        [launchScreenView].forEach {
-            self.view.addSubview(launchScreenView)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        NSLayoutConstraint.activate([
-            launchScreenView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            launchScreenView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            launchScreenView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            launchScreenView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        launchScreenView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addAndPinSubview(launchScreenView)
     }
     
     private func updateViews() {

@@ -104,17 +104,15 @@ extension ProductDetailView {
     private func setupViews() {
         self.backgroundColor = .clear
         
-        [productImageView, priceLabel, titleLabel, descriptionLabel, addToCartButton, addToListButton, backgroundScrollView].forEach {
-            self.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
+        backgroundScrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.addAndPinSubview(backgroundScrollView)
         
         [containerView].forEach {
             backgroundScrollView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        [priceLabel, titleLabel, descriptionLabel, addToCartButton, addToListButton].forEach {
+        [productImageView, priceLabel, titleLabel, descriptionLabel, addToCartButton, addToListButton].forEach {
             containerView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -122,21 +120,16 @@ extension ProductDetailView {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            productImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            productImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            productImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            productImageView.heightAnchor.constraint(equalTo: productImageView.widthAnchor),
-            backgroundScrollView.topAnchor.constraint(equalTo: self.topAnchor),
-            
-            backgroundScrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            backgroundScrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            backgroundScrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
             containerView.topAnchor.constraint(equalTo: backgroundScrollView.topAnchor),
             containerView.bottomAnchor.constraint(equalTo: backgroundScrollView.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: backgroundScrollView.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: backgroundScrollView.trailingAnchor),
             containerView.widthAnchor.constraint(equalTo: backgroundScrollView.widthAnchor),
+            
+            productImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            productImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            productImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            productImageView.heightAnchor.constraint(equalTo: productImageView.widthAnchor),
             
             priceLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 15),
             priceLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),

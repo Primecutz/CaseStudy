@@ -51,17 +51,8 @@ extension DetailViewController {
     private func setupViews() {
         self.view.backgroundColor = .targetStarkWhiteColor
         
-        [detailView].forEach {
-            self.view.addSubview(detailView)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        NSLayoutConstraint.activate([
-            detailView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -self.tabBarHeight),
-            detailView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            detailView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        detailView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addAndPinSubview(detailView)
     }
     
     private func updateViews() {

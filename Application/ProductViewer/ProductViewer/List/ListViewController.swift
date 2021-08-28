@@ -37,9 +37,8 @@ class ListViewController: UIViewController {
         harmonyLayout.defaultSectionMargins = HarmonyLayoutMargins(top: .narrow, right: .none, bottom: .none, left: .none)
         let listCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: harmonyLayout)
         listCollectionView.backgroundColor = .targetFadeAwayGrayColor
-        listCollectionView.translatesAutoresizingMaskIntoConstraints = false
         listCollectionView.alwaysBounceVertical = true
-        listCollectionView.contentInset = .zero //UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+        listCollectionView.contentInset = .zero
         return listCollectionView
     }()
     
@@ -73,6 +72,8 @@ extension ListViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.view.backgroundColor = .targetStarkWhiteColor
+        
+        listCollectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addAndPinSubview(listCollectionView)
         
         [titleImageView, lineView].forEach {
