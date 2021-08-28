@@ -33,6 +33,7 @@ extension MainTabBarController {
     
     private func setupViews() {
         self.tabBar.tintColor = .targetBullseyeRedColor
+        self.tabBar.unselectedItemTintColor = .targetNeutralGrayColor
         self.tabBar.barTintColor = .targetStarkWhiteColor
         self.tabBar.barStyle = .default
         self.tabBar.isTranslucent = true
@@ -57,8 +58,13 @@ extension MainTabBarController {
         let listVC = listCoordinator.viewController
         let listNC = UINavigationController(rootViewController: listVC)
         listNC.tabBarItem = UITabBarItem(title: "Deals", image: .dealsTab, selectedImage: .dealsTab)
+        
+        let cartCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
+        let cartVC = cartCoordinator.viewController
+        let cartNC = UINavigationController(rootViewController: cartVC)
+        cartNC.tabBarItem = UITabBarItem(title: "Cart", image: .cartTab, selectedImage: .cartTab)
  
-        self.viewControllers = [listNC]
+        self.viewControllers = [listNC, cartNC]
     }
     
 }

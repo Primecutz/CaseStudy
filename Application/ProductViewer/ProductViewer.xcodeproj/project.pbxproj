@@ -16,6 +16,7 @@
 		5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08151D66333C006BF0C0 /* ListViewState.swift */; };
 		5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF081E1D663598006BF0C0 /* ProductListView.swift */; };
 		C5C0528B23886699002A586D /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; };
+		CB044E7026DAE70E00623AAE /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB044E6F26DAE70E00623AAE /* CartViewController.swift */; };
 		CB22CBD126DAC9A700F42032 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22CBD026DAC9A700F42032 /* MainTabBarController.swift */; };
 		CB978ADC26D85A57008BD020 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978ADB26D85A57008BD020 /* Domain.framework */; };
 		CB978AF526D85B08008BD020 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978AF426D85B08008BD020 /* DataSource.framework */; };
@@ -50,6 +51,7 @@
 		5BEF08151D66333C006BF0C0 /* ListViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewState.swift; sourceTree = "<group>"; };
 		5BEF081E1D663598006BF0C0 /* ProductListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		C5C0528723886616002A586D /* Tempo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tempo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB044E6F26DAE70E00623AAE /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		CB22CBD026DAC9A700F42032 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CB978ADB26D85A57008BD020 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB978AF426D85B08008BD020 /* DataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 				CB22CBCF26DAC99400F42032 /* Main */,
 				5BEF080F1D663283006BF0C0 /* List */,
 				5BEF08101D66328D006BF0C0 /* Detail */,
+				CB044E6E26DAE6DA00623AAE /* Cart */,
 			);
 			path = ProductViewer;
 			sourceTree = "<group>";
@@ -159,6 +162,14 @@
 				5B302A8E1D663A8500FA2FFD /* ProductListComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		CB044E6E26DAE6DA00623AAE /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				CB044E6F26DAE70E00623AAE /* CartViewController.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		CB22CBCF26DAC99400F42032 /* Main */ = {
@@ -314,6 +325,7 @@
 				CB978B2F26D8B953008BD020 /* UIImageView+Extension.swift in Sources */,
 				5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */,
 				CBE86A8D26DA0CC7004528C0 /* UIImage+Extension.swift in Sources */,
+				CB044E7026DAE70E00623AAE /* CartViewController.swift in Sources */,
 				CBE86A9826DA100A004528C0 /* LaunchScreenPresenter.swift in Sources */,
 				5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */,
 				CBDC29A026D99F8E00B1233C /* ProductDetailPresenter.swift in Sources */,

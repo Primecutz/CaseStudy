@@ -15,6 +15,7 @@ extension UIImage {
     static let targetBrand = UIImage(named: "TargetBrand")?.withRenderingMode(.alwaysOriginal)
     
     // Tab Icons
-    static let dealsTab = UIImage(named: "DealsTab")?.withRenderingMode(.alwaysOriginal)
+    static let dealsTab = UIImage(named: "DealsTab")?.withRenderingMode(.alwaysTemplate)
+    static let cartTab = UIImage(named: "CartTab")?.withRenderingMode(.alwaysTemplate)
     
 }
