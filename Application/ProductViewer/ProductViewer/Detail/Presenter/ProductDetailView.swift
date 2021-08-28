@@ -136,7 +136,6 @@ extension ProductDetailView {
             containerView.bottomAnchor.constraint(equalTo: backgroundScrollView.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: backgroundScrollView.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: backgroundScrollView.trailingAnchor),
-            containerView.heightAnchor.constraint(greaterThanOrEqualTo: backgroundScrollView.heightAnchor),
             containerView.widthAnchor.constraint(equalTo: backgroundScrollView.widthAnchor),
             
             priceLabel.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 15),
@@ -148,7 +147,7 @@ extension ProductDetailView {
             titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
             
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
-            descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: addToCartButton.topAnchor, constant: -15),
+            descriptionLabel.bottomAnchor.constraint(equalTo: addToCartButton.topAnchor, constant: -15),
             descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
             descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
             descriptionLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 70000),

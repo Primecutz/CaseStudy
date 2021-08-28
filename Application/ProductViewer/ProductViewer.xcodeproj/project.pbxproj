@@ -16,6 +16,7 @@
 		5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08151D66333C006BF0C0 /* ListViewState.swift */; };
 		5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF081E1D663598006BF0C0 /* ProductListView.swift */; };
 		C5C0528B23886699002A586D /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C0528723886616002A586D /* Tempo.framework */; };
+		CB22CBD126DAC9A700F42032 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22CBD026DAC9A700F42032 /* MainTabBarController.swift */; };
 		CB978ADC26D85A57008BD020 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978ADB26D85A57008BD020 /* Domain.framework */; };
 		CB978AF526D85B08008BD020 /* DataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB978AF426D85B08008BD020 /* DataSource.framework */; };
 		CB978B2726D88116008BD020 /* DealsListDependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB978B2626D88116008BD020 /* DealsListDependencyInjector.swift */; };
@@ -49,6 +50,7 @@
 		5BEF08151D66333C006BF0C0 /* ListViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewState.swift; sourceTree = "<group>"; };
 		5BEF081E1D663598006BF0C0 /* ProductListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		C5C0528723886616002A586D /* Tempo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tempo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB22CBD026DAC9A700F42032 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CB978ADB26D85A57008BD020 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB978AF426D85B08008BD020 /* DataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB978B2626D88116008BD020 /* DealsListDependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsListDependencyInjector.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				CBE86A9126DA0ECC004528C0 /* Launch */,
+				CB22CBCF26DAC99400F42032 /* Main */,
 				5BEF080F1D663283006BF0C0 /* List */,
 				5BEF08101D66328D006BF0C0 /* Detail */,
 			);
@@ -156,6 +159,14 @@
 				5B302A8E1D663A8500FA2FFD /* ProductListComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		CB22CBCF26DAC99400F42032 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CB22CBD026DAC9A700F42032 /* MainTabBarController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		CB40A0AD26D6E0AC007B8297 /* Resources */ = {
@@ -310,6 +321,7 @@
 				CB978B2726D88116008BD020 /* DealsListDependencyInjector.swift in Sources */,
 				CB978B2926D88180008BD020 /* Configuration.swift in Sources */,
 				5BEF081F1D663598006BF0C0 /* ProductListView.swift in Sources */,
+				CB22CBD126DAC9A700F42032 /* MainTabBarController.swift in Sources */,
 				5B302A8F1D663A8500FA2FFD /* ProductListComponent.swift in Sources */,
 				CBE86A9A26DA101F004528C0 /* LaunchScreenCoordinator.swift in Sources */,
 				5BEF08141D663304006BF0C0 /* ListViewController.swift in Sources */,

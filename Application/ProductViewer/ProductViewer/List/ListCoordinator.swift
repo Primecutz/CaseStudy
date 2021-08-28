@@ -60,7 +60,7 @@ extension ListCoordinator {
             let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
             detailCoordinator.productId = event.item.id
             let detailVC = detailCoordinator.viewController
-            self?.viewController.present(detailVC, animated: true)
+            self?.viewController.navigationController?.pushViewController(detailVC, animated: true)
         }
         
         dispatcher.addObserver(ShipButtonPressed.self) { event in

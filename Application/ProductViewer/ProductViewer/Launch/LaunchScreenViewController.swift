@@ -54,7 +54,7 @@ class LaunchScreenViewController: UIViewController {
 extension LaunchScreenViewController {
     
     private func setupViews() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .targetStarkWhiteColor
         
         [launchScreenView].forEach {
             self.view.addSubview(launchScreenView)
@@ -81,9 +81,8 @@ extension LaunchScreenViewController {
 extension LaunchScreenViewController {
     
     private func presentMainApp() {
-        let listCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
-        let listVC = listCoordinator.viewController
-        self.transitionToViewController(listVC)
+        let mainTabBar = MainTabBarController()
+        self.transitionToViewController(mainTabBar)
     }
     
 }

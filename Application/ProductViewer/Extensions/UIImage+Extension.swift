@@ -12,8 +12,9 @@ extension UIImage {
     
     // Logos
     static let target = UIImage(named: "Target")?.withRenderingMode(.alwaysOriginal)
+    static let targetBrand = UIImage(named: "TargetBrand")?.withRenderingMode(.alwaysOriginal)
     
     // Tab Icons
-    static let dealsTab = UIImage(named: "DealsTab")?.withRenderingMode(.alwaysTemplate)
+    static let dealsTab = UIImage(named: "DealsTab")?.withRenderingMode(.alwaysOriginal)
     
 }

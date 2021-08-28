@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     
     private func setupViews() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .targetStarkWhiteColor
         
         [detailView].forEach {
             self.view.addSubview(detailView)
@@ -58,7 +58,7 @@ extension DetailViewController {
         
         NSLayoutConstraint.activate([
             detailView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            detailView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -self.tabBarHeight),
             detailView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             detailView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
