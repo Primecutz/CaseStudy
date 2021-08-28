@@ -47,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     private func presentMainApp() {
-        let listCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
+        let launchScreenCoordinator = LaunchScreenCoordinator()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = listCoordinator.viewController
+        window?.rootViewController = launchScreenCoordinator.viewController
         window?.makeKeyAndVisible()
     }
     
