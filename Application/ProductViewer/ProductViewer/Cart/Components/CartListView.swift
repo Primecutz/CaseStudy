@@ -1,21 +1,22 @@
 //
-//  ProductListView.swift
+//  CartListView.swift
 //  ProductViewer
 //
-//  Copyright © 2016 Target. All rights reserved.
+//  Created by David Truong on 8/28/21.
+//  Copyright © 2021 Target. All rights reserved.
 //
 
 import UIKit
 import Tempo
 
-class ProductListView: UIView {
+class CartListView: UIView {
     
     // Class Properties
     private var item: ListItemViewState?
     private var imageDownloadTask: URLSessionDataTask?
     
     // Delegate Properties
-    weak var delegate: ProductListViewDelegate?
+    weak var delegate: CartListViewDelegate?
 
     // View Properties
     private lazy var containerView: UIView = {
@@ -57,34 +58,48 @@ class ProductListView: UIView {
         return priceLabel
     }()
     
-    private lazy var shipButton: UIButton = {
-        let shipButton = UIButton(type: .system)
-        shipButton.setTitle("ship", for: .normal)
-        shipButton.setTitleColor(.targetJetBlackColor, for: .normal)
-        shipButton.titleLabel?.font = .systemFont(ofSize: 18)
-        shipButton.addTarget(self, action: #selector(shipButtonPressed), for: .touchUpInside)
-        shipButton.contentHorizontalAlignment = .right
-        return shipButton
+    private lazy var quantityStackView: UIStackView = {
+        let quantityStackView = UIStackView()
+        quantityStackView.distribution = .fillEqually
+        return quantityStackView
     }()
     
-    private lazy var orLabel: UILabel = {
-        let orLabel = UILabel()
-        orLabel.text = "or"
-        orLabel.font = .systemFont(ofSize: 20)
-        orLabel.textColor = .targetStrokeGrayColor
-        return orLabel
+    private lazy var subtractButton: UIButton = {
+        let subtractButton = UIButton(type: .system)
+        subtractButton.setTitle("-", for: .normal)
+        subtractButton.setTitleColor(.targetStrokeGrayColor, for: .normal)
+        subtractButton.titleLabel?.font = .systemFont(ofSize: 30)
+        subtractButton.addTarget(self, action: #selector(subtractButtonPressed), for: .touchUpInside)
+        return subtractButton
     }()
     
-    private lazy var b2Button: UIButton = {
-        let b2Button = UIButton(type: .system)
-        b2Button.setTitle("B2", for: .normal)
-        b2Button.setTitleColor(.targetBullseyeRedColor, for: .normal)
-        b2Button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        b2Button.addTarget(self, action: #selector(b2ButtonPressed), for: .touchUpInside)
-        b2Button.layer.cornerRadius = buttonHeightConstant / 2
-        b2Button.layer.borderColor = UIColor.targetStrokeGrayColor.cgColor
-        b2Button.layer.borderWidth = 2
-        return b2Button
+    private lazy var quantityLabel: UILabel = {
+        let quantityLabel = UILabel()
+        quantityLabel.font = .systemFont(ofSize: 20)
+        quantityLabel.textColor = .targetJetBlackColor
+        quantityLabel.adjustsFontSizeToFitWidth = true
+        quantityLabel.textAlignment = .center
+        return quantityLabel
+    }()
+    
+    private lazy var additionButton: UIButton = {
+        let additionButton = UIButton(type: .system)
+        additionButton.setTitle("+", for: .normal)
+        additionButton.setTitleColor(.targetStrokeGrayColor, for: .normal)
+        additionButton.titleLabel?.font = .systemFont(ofSize: 30)
+        additionButton.addTarget(self, action: #selector(additionButtonPressed), for: .touchUpInside)
+        return additionButton
+    }()
+    
+    private lazy var removeButton: UIButton = {
+        let removeButton = UIButton(type: .system)
+        removeButton.setImage(.trash, for: .normal)
+        removeButton.addTarget(self, action: #selector(removeButtonPressed), for: .touchUpInside)
+        removeButton.imageEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+        removeButton.layer.cornerRadius = buttonHeightConstant / 2
+        removeButton.layer.borderColor = UIColor.targetBullseyeRedColor.cgColor
+        removeButton.layer.borderWidth = 2
+        return removeButton
     }()
     
     // Constraint Properties
@@ -105,7 +120,7 @@ class ProductListView: UIView {
 
 // MARK: Setup Views
 
-extension ProductListView {
+extension CartListView {
 
     private func setupViews() {
         self.backgroundColor = .clear
@@ -115,8 +130,13 @@ extension ProductListView {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        [productImageView, titleLabel, dividerLineView, priceLabel, shipButton, orLabel, b2Button].forEach {
+        [productImageView, titleLabel, dividerLineView, priceLabel, quantityStackView, removeButton].forEach {
             containerView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        [subtractButton, quantityLabel, additionButton].forEach {
+            quantityStackView.addArrangedSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
@@ -146,20 +166,17 @@ extension ProductListView {
             priceLabel.topAnchor.constraint(equalTo: containerView.centerYAnchor),
             priceLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             priceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor),
-            priceLabel.trailingAnchor.constraint(equalTo: shipButton.leadingAnchor, constant: -15),
+            priceLabel.trailingAnchor.constraint(equalTo: quantityStackView.leadingAnchor, constant: -15),
             
-            shipButton.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
-            shipButton.heightAnchor.constraint(equalToConstant: buttonHeightConstant),
-            shipButton.widthAnchor.constraint(equalTo: shipButton.heightAnchor),
+            quantityStackView.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
+            quantityStackView.heightAnchor.constraint(equalToConstant: buttonHeightConstant),
+            quantityStackView.widthAnchor.constraint(equalToConstant: 100),
             
-            orLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
-            orLabel.leadingAnchor.constraint(equalTo: shipButton.trailingAnchor, constant: 5),
-            
-            b2Button.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
-            b2Button.leadingAnchor.constraint(equalTo: orLabel.trailingAnchor, constant: 5),
-            b2Button.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
-            b2Button.heightAnchor.constraint(equalToConstant: buttonHeightConstant),
-            b2Button.widthAnchor.constraint(equalTo: b2Button.heightAnchor)
+            removeButton.centerYAnchor.constraint(equalTo: quantityStackView.centerYAnchor),
+            removeButton.leadingAnchor.constraint(equalTo: quantityStackView.trailingAnchor, constant: 5),
+            removeButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
+            removeButton.heightAnchor.constraint(equalToConstant: buttonHeightConstant),
+            removeButton.widthAnchor.constraint(equalTo: removeButton.heightAnchor)
         ])
     }
 
@@ -167,12 +184,13 @@ extension ProductListView {
 
 // MARK: Public Functions
 
-extension ProductListView {
+extension CartListView {
     
     func configureViewWithItem(_ item: ListItemViewState) {
         self.item = item
         titleLabel.text = item.title
         priceLabel.text = item.price
+        quantityLabel.text = "\(item.quantityInCart ?? 1)"
         imageDownloadTask = imageDownloadTask == nil ? productImageView.loadImageFrom(item.imageUrl) : nil
     }
     
@@ -180,23 +198,28 @@ extension ProductListView {
 
 // MARK: Private Functions
 
-extension ProductListView {
+extension CartListView {
     
-    @objc private func shipButtonPressed() {
+    @objc private func subtractButtonPressed() {
         guard let item = item else { return }
-        delegate?.addItemToShippingCart(item)
+        delegate?.updateItemQuantity(item, add: false)
     }
     
-    @objc private func b2ButtonPressed() {
+    @objc private func additionButtonPressed() {
         guard let item = item else { return }
-        delegate?.addItemToWishList(item)
+        delegate?.updateItemQuantity(item, add: true)
+    }
+    
+    @objc private func removeButtonPressed() {
+        guard let item = item else { return }
+        delegate?.removeItemFromShippingCart(item)
     }
     
 }
 
 // MARK: ReusableView
 
-extension ProductListView: ReusableView {
+extension CartListView: ReusableView {
     @nonobjc static let reuseID = "ProductListViewIdentifier"
     
     @nonobjc func prepareForReuse() {
@@ -206,7 +229,7 @@ extension ProductListView: ReusableView {
     }
 }
 
-protocol ProductListViewDelegate: AnyObject {
-    func addItemToShippingCart(_ item: ListItemViewState)
-    func addItemToWishList(_ item: ListItemViewState)
+protocol CartListViewDelegate: AnyObject {
+    func updateItemQuantity(_ item: ListItemViewState, add: Bool)
+    func removeItemFromShippingCart(_ item: ListItemViewState)
 }

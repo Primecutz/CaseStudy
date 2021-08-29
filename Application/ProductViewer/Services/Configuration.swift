@@ -17,3 +17,8 @@ struct Configuration {
     static let baseApiUrl = "https://api.target.com/mobile_case_study_deals/v1"
     #endif
 }
+
+struct TabBarIndex {
+    static let deals = 0
+    static let cart = 1
+}

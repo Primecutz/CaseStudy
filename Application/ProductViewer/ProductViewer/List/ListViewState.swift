@@ -18,6 +18,7 @@ struct ListItemViewState: TempoViewStateItem, Equatable {
     let description: String
     let price: String
     let imageUrl: String
+    var quantityInCart: Int?
 }
 
 func == (lhs: ListItemViewState, rhs: ListItemViewState) -> Bool {

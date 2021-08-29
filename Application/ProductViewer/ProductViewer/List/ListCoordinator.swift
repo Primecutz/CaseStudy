@@ -14,6 +14,7 @@ class ListCoordinator: TempoCoordinator {
     // Class Properties
     private let productListInteractor: ProductListInteractor
     let dispatcher = Dispatcher()
+    var shoppingCart = [ListItemViewState]()
     
     // Presenters, view controllers, view state.
     var presenters = [TempoPresenterType]() {
@@ -57,22 +58,35 @@ extension ListCoordinator {
     
     private func registerListeners() {
         dispatcher.addObserver(ListItemPressed.self) { [weak self] event in
-            let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
-            detailCoordinator.productId = event.item.id
-            let detailVC = detailCoordinator.viewController
-            self?.viewController.navigationController?.pushViewController(detailVC, animated: true)
+            self?.presentItemDetail(event.item)
         }
         
-        dispatcher.addObserver(ShipButtonPressed.self) { event in
-            // Todo: Add to shipping cart
-            let itemName = event.item.title
-            print("Added \(itemName) to shopping cart")
+        dispatcher.addObserver(ShipButtonPressed.self) { [weak self] event in
+            self?.addItemToCart(event.item)
         }
         
         dispatcher.addObserver(B2ButtonPressed.self) { event in
             // Todo: Add to wish list
             let itemName = event.item.title
-            print("Added \(itemName) to wish list")
+            print("Add \(itemName) to wish list")
+        }
+    }
+    
+    private func presentItemDetail(_ item: ListItemViewState) {
+        let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
+        detailCoordinator.productId = item.id
+        let detailVC = detailCoordinator.viewController
+        self.viewController.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    private func addItemToCart(_ item: ListItemViewState) {
+        var itemToAdd = item
+        if let indexOfItem = shoppingCart.firstIndex(of: itemToAdd), var quantityInCart = shoppingCart[indexOfItem].quantityInCart {
+            quantityInCart += 1
+        } else {
+            itemToAdd.quantityInCart = 1
+            shoppingCart.append(itemToAdd)
+            print("Add \(item.title) to shopping cart")
         }
     }
     

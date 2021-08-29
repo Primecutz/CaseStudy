@@ -18,4 +18,7 @@ extension UIImage {
     static let dealsTab = UIImage(named: "DealsTab")?.withRenderingMode(.alwaysTemplate)
     static let cartTab = UIImage(named: "CartTab")?.withRenderingMode(.alwaysTemplate)
     
+    // Icons
+    static let trash = UIImage(named: "Trash")?.withRenderingMode(.alwaysOriginal)
+    
 }

@@ -32,15 +32,15 @@ class CartViewController: UIViewController {
         return lineView
     }()
     
-    private lazy var listCollectionView: UICollectionView = {
+    private lazy var cartCollectionView: UICollectionView = {
         let harmonyLayout = HarmonyLayout()
         harmonyLayout.collectionViewMargins = HarmonyLayoutMargins(top: .narrow, right: .none, bottom: .narrow, left: .none)
         harmonyLayout.defaultSectionMargins = HarmonyLayoutMargins(top: .narrow, right: .none, bottom: .none, left: .none)
-        let listCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: harmonyLayout)
-        listCollectionView.backgroundColor = .targetFadeAwayGrayColor
-        listCollectionView.alwaysBounceVertical = true
-        listCollectionView.contentInset = .zero
-        return listCollectionView
+        let cartCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: harmonyLayout)
+        cartCollectionView.backgroundColor = .targetFadeAwayGrayColor
+        cartCollectionView.alwaysBounceVertical = true
+        cartCollectionView.contentInset = .zero
+        return cartCollectionView
     }()
     
     // View Lifecycle
@@ -74,8 +74,8 @@ extension CartViewController {
         
         self.view.backgroundColor = .targetStarkWhiteColor
         
-        listCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addAndPinSubview(listCollectionView)
+        cartCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addAndPinSubview(cartCollectionView)
         
         [titleImageView, lineView].forEach {
             self.navigationController?.navigationBar.addSubview($0)
@@ -99,9 +99,9 @@ extension CartViewController {
     }
     
     private func updateViews() {
-        let components: [ComponentType] = [ProductListComponent()]
+        let components: [ComponentType] = [CartListComponent()]
         let componentProvider = ComponentProvider(components: components, dispatcher: coordinator.dispatcher)
-        let collectionViewAdapter = CollectionViewAdapter(collectionView: listCollectionView, componentProvider: componentProvider)
+        let collectionViewAdapter = CollectionViewAdapter(collectionView: cartCollectionView, componentProvider: componentProvider)
         let sectionPresenter = SectionPresenter(adapter: collectionViewAdapter)
         coordinator.presenters = [sectionPresenter]
     }

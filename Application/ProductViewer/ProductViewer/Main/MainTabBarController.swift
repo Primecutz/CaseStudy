@@ -10,6 +10,10 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    // Class Properties
+    let listCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
+    let cartCoordinator = CartCoordinator()
+    
     // View Properties
     private lazy var lineView: UIView = {
         let lineView = UIView()
@@ -32,6 +36,7 @@ class MainTabBarController: UITabBarController {
 extension MainTabBarController {
     
     private func setupViews() {
+        self.delegate = self
         self.tabBar.tintColor = .targetBullseyeRedColor
         self.tabBar.unselectedItemTintColor = .targetNeutralGrayColor
         self.tabBar.barTintColor = .targetStarkWhiteColor
@@ -54,17 +59,32 @@ extension MainTabBarController {
     }
     
     private func setupTabs() {
-        let listCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
         let listVC = listCoordinator.viewController
         let listNC = UINavigationController(rootViewController: listVC)
         listNC.tabBarItem = UITabBarItem(title: "Deals", image: .dealsTab, selectedImage: .dealsTab)
         
-        let cartCoordinator = DealsListDependencyInjector().setupDealsListDependencies()
         let cartVC = cartCoordinator.viewController
         let cartNC = UINavigationController(rootViewController: cartVC)
         cartNC.tabBarItem = UITabBarItem(title: "Cart", image: .cartTab, selectedImage: .cartTab)
  
         self.viewControllers = [listNC, cartNC]
+    }
+    
+}
+
+// MARK: UITabBarControllerDelegate
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        switch tabBarController.selectedIndex {
+        case TabBarIndex.deals:
+            listCoordinator.shoppingCart = cartCoordinator.shoppingCart
+        case TabBarIndex.cart:
+            cartCoordinator.shoppingCart = listCoordinator.shoppingCart
+        default:
+            print("No other tabs implemented yet")
+        }
     }
     
 }
