@@ -12,7 +12,7 @@ import Tempo
 class CartListView: UIView {
     
     // Class Properties
-    private var item: ListItemViewState?
+    private var item: CartItemViewState?
     private var imageDownloadTask: URLSessionDataTask?
     
     // Delegate Properties
@@ -186,14 +186,14 @@ extension CartListView {
 
 extension CartListView {
     
-    func configureViewWithItem(_ item: ListItemViewState) {
+    func configureViewWithItem(_ item: CartItemViewState) {
         titleLabel.text = item.title
         priceLabel.text = item.price
         updateItemQuantity(item)
         imageDownloadTask = imageDownloadTask == nil ? productImageView.loadImageFrom(item.imageUrl) : nil
     }
     
-    func updateItemQuantity(_ item: ListItemViewState) {
+    func updateItemQuantity(_ item: CartItemViewState) {
         self.item = item
         quantityLabel.text = "\(item.quantityInCart)"
     }
@@ -234,6 +234,6 @@ extension CartListView: ReusableView {
 }
 
 protocol CartListViewDelegate: AnyObject {
-    func updateItemQuantity(_ item: ListItemViewState, view: CartListView, add: Bool)
-    func removeItemFromShippingCart(_ item: ListItemViewState)
+    func updateItemQuantity(_ item: CartItemViewState, view: CartListView, add: Bool)
+    func removeItemFromShippingCart(_ item: CartItemViewState)
 }

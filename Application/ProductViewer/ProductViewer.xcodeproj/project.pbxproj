@@ -44,6 +44,8 @@
 		CBE86A9A26DA101F004528C0 /* LaunchScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE86A9926DA101F004528C0 /* LaunchScreenCoordinator.swift */; };
 		CBE86A9C26DA115C004528C0 /* LaunchScreenViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE86A9B26DA115C004528C0 /* LaunchScreenViewState.swift */; };
 		CBE86A9E26DA1486004528C0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE86A9D26DA1486004528C0 /* UIViewController+Extension.swift */; };
+		CBF4596B26DB58F700D79F33 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4596A26DB58F700D79F33 /* Product.swift */; };
+		CBFA8ED926DB555600E7BE57 /* CartViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA8ED826DB555600E7BE57 /* CartViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,6 +101,8 @@
 		CBE86A9926DA101F004528C0 /* LaunchScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenCoordinator.swift; sourceTree = "<group>"; };
 		CBE86A9B26DA115C004528C0 /* LaunchScreenViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewState.swift; sourceTree = "<group>"; };
 		CBE86A9D26DA1486004528C0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CBF4596A26DB58F700D79F33 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		CBFA8ED826DB555600E7BE57 /* CartViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,7 @@
 		5B259CC81D6630E0001D755F /* ProductViewer */ = {
 			isa = PBXGroup;
 			children = (
+				CBF4596C26DB58FD00D79F33 /* ModelControllers */,
 				CBE86A9126DA0ECC004528C0 /* Launch */,
 				CB22CBCF26DAC99400F42032 /* Main */,
 				5BEF080F1D663283006BF0C0 /* List */,
@@ -197,6 +202,7 @@
 				CB4FBCC326DAFA41001D5707 /* Components */,
 				CB4FBCC126DAFA3B001D5707 /* CartCoordinator.swift */,
 				CB044E6F26DAE70E00623AAE /* CartViewController.swift */,
+				CBFA8ED826DB555600E7BE57 /* CartViewState.swift */,
 				CB4FBCBF26DAFA2D001D5707 /* CartEvents.swift */,
 			);
 			path = Cart;
@@ -286,6 +292,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		CBF4596C26DB58FD00D79F33 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CBF4596A26DB58F700D79F33 /* Product.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,6 +378,7 @@
 				CB4FBCC026DAFA2D001D5707 /* CartEvents.swift in Sources */,
 				CBDC299926D99DFF00B1233C /* DetailViewController.swift in Sources */,
 				CB978B2F26D8B953008BD020 /* UIImageView+Extension.swift in Sources */,
+				CBF4596B26DB58F700D79F33 /* Product.swift in Sources */,
 				5BEF08161D66333C006BF0C0 /* ListViewState.swift in Sources */,
 				CBE86A8D26DA0CC7004528C0 /* UIImage+Extension.swift in Sources */,
 				CB044E7026DAE70E00623AAE /* CartViewController.swift in Sources */,
@@ -378,6 +393,7 @@
 				5B302A8F1D663A8500FA2FFD /* ProductListComponent.swift in Sources */,
 				CBE86A9A26DA101F004528C0 /* LaunchScreenCoordinator.swift in Sources */,
 				CB4FBCC726DAFA94001D5707 /* CartListComponent.swift in Sources */,
+				CBFA8ED926DB555600E7BE57 /* CartViewState.swift in Sources */,
 				5BEF08141D663304006BF0C0 /* ListViewController.swift in Sources */,
 				CB4FBCC526DAFA8A001D5707 /* CartListView.swift in Sources */,
 				CBE86A9C26DA115C004528C0 /* LaunchScreenViewState.swift in Sources */,

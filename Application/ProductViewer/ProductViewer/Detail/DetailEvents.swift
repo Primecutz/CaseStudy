@@ -10,7 +10,6 @@ import Tempo
 
 struct AddToCartButtonPressed: EventType {
     let item: DetailItemViewState
-    
 }
 
 struct AddToListButtonPressed: EventType {

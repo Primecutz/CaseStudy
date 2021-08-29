@@ -9,13 +9,13 @@
 import Tempo
 
 struct CartItemPressed: EventType {
-    let item: ListItemViewState
+    let item: CartItemViewState
 }
 
 struct UpdateQuantityPressed: EventType {
-    let item: ListItemViewState
+    let item: CartItemViewState
 }
 
 struct RemoveItemPressed: EventType {
-    let item: ListItemViewState
+    let item: CartItemViewState
 }

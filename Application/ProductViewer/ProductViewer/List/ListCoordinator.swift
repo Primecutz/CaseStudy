@@ -14,7 +14,6 @@ class ListCoordinator: TempoCoordinator {
     // Class Properties
     private let productListInteractor: ProductListInteractor
     let dispatcher = Dispatcher()
-    var shoppingCart = [ListItemViewState]()
     
     // Presenters, view controllers, view state.
     var presenters = [TempoPresenterType]() {
@@ -80,11 +79,11 @@ extension ListCoordinator {
     }
     
     private func addItemToCart(_ item: ListItemViewState) {
-        if let indexOfItem = shoppingCart.firstIndex(of: item) {
-            shoppingCart[indexOfItem].quantityInCart += 1
-            print("Add one more to \(item.title) in shopping cart")
+        let product = item.transferToProduct()
+        if Product.shoppingCart.contains(product) {
+            print("\(item.title) already in cart")
         } else {
-            shoppingCart.append(item)
+            Product.shoppingCart.append(product)
             print("Add \(item.title) to shopping cart")
         }
     }
@@ -101,7 +100,7 @@ extension ListCoordinator {
             case .success(let productEntities):
                 self?.viewState.listItems = productEntities.compactMap {
                     if let displayPrice = $0.regularPrice?.displayString {
-                        return ListItemViewState(id: $0.id, title: $0.title, description: $0.description, price: displayPrice, imageUrl: $0.imageUrl, quantityInCart: 1)
+                        return ListItemViewState(id: $0.id, title: $0.title, description: $0.description, price: displayPrice, imageUrl: $0.imageUrl)
                     } else {
                         return nil
                     }

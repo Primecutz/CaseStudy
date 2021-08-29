@@ -14,7 +14,6 @@ class CartCoordinator: TempoCoordinator {
     
     // Class Properties
     let dispatcher = Dispatcher()
-    var shoppingCart = [ListItemViewState]()
     
     // Presenters, view controllers, view state.
     var presenters = [TempoPresenterType]() {
@@ -23,7 +22,7 @@ class CartCoordinator: TempoCoordinator {
         }
     }
     
-    var viewState = ListViewState(listItems: []) {
+    var viewState = CartViewState(cartItems: []) {
         didSet {
             updateUI()
         }
@@ -45,8 +44,8 @@ class CartCoordinator: TempoCoordinator {
 extension CartCoordinator {
     
     func updateState() {
-        viewState.listItems = []
-        viewState.listItems = shoppingCart
+        viewState.cartItems = []
+        viewState.cartItems = Product.shoppingCart.map { return $0.transferToCartItemViewState() }
     }
     
 }
@@ -63,10 +62,7 @@ extension CartCoordinator {
     
     private func registerListeners() {
         dispatcher.addObserver(CartItemPressed.self) { [weak self] event in
-            let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
-            detailCoordinator.productId = event.item.id
-            let detailVC = detailCoordinator.viewController
-            self?.viewController.navigationController?.pushViewController(detailVC, animated: true)
+            self?.presentItemDetail(event.item)
         }
         
         dispatcher.addObserver(UpdateQuantityPressed.self) { [weak self] event in
@@ -78,14 +74,23 @@ extension CartCoordinator {
         }
     }
     
-    private func updateShoppingCart(_ item: ListItemViewState) {
-        guard let indexOfItem = shoppingCart.firstIndex(of: item) else { return }
-        shoppingCart[indexOfItem] = item
+    private func presentItemDetail(_ item: CartItemViewState) {
+        let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
+        detailCoordinator.productId = item.id
+        let detailVC = detailCoordinator.viewController
+        self.viewController.navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    private func removeItemFromCart(_ item: ListItemViewState) {
-        guard let indexOfItem = shoppingCart.firstIndex(of: item) else { return }
-        shoppingCart.remove(at: indexOfItem)
+    private func updateShoppingCart(_ item: CartItemViewState) {
+        let product = item.transferToProduct()
+        guard let indexOfItem = Product.shoppingCart.firstIndex(of: product) else { return }
+        Product.shoppingCart[indexOfItem] = product
+    }
+    
+    private func removeItemFromCart(_ item: CartItemViewState) {
+        let product = item.transferToProduct()
+        guard let indexOfItem = Product.shoppingCart.firstIndex(of: product) else { return }
+        Product.shoppingCart.remove(at: indexOfItem)
         updateState()
     }
     

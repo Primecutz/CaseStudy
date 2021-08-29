@@ -77,15 +77,8 @@ extension MainTabBarController {
 extension MainTabBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        switch tabBarController.selectedIndex {
-        case TabBarIndex.deals:
-            listCoordinator.shoppingCart = cartCoordinator.shoppingCart
-        case TabBarIndex.cart:
-            cartCoordinator.shoppingCart = listCoordinator.shoppingCart
-            cartCoordinator.updateState()
-        default:
-            print("No other tabs implemented yet")
-        }
+        guard tabBarController.selectedIndex == TabBarIndex.cart else { return }
+        cartCoordinator.updateState()
     }
     
 }

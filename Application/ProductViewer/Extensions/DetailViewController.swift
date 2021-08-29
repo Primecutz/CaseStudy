@@ -56,7 +56,7 @@ extension DetailViewController {
     }
     
     private func updateViews() {
-        let productDetailPresenter = ProductDetailPresenter(productDetailView: detailView)
+        let productDetailPresenter = ProductDetailPresenter(productDetailView: detailView, dispatcher: coordinator.dispatcher)
         coordinator.presenters = [productDetailPresenter]
     }
     

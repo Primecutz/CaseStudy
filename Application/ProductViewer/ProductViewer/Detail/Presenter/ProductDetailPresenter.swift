@@ -14,8 +14,9 @@ class ProductDetailPresenter: TempoPresenter {
     
     var dispatcher: Dispatcher?
 
-    required init(productDetailView: ProductDetailView) {
+    required init(productDetailView: ProductDetailView, dispatcher: Dispatcher) {
         self.productDetailView = productDetailView
+        self.dispatcher = dispatcher
     }
     
     func present(_ viewState: DetailViewState) {

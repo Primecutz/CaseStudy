@@ -1,23 +1,25 @@
 //
-//  ListViewState.swift
+//  CartViewState.swift
 //  ProductViewer
 //
-//  Copyright © 2016 Target. All rights reserved.
+//  Created by David Truong on 8/28/21.
+//  Copyright © 2021 Target. All rights reserved.
 //
 
 import Tempo
 
-struct ListViewState: TempoViewState, TempoSectionedViewState {
-    var listItems: [TempoViewStateItem]
-    var sections: [TempoViewStateItem] { return listItems }
+struct CartViewState: TempoViewState, TempoSectionedViewState {
+    var cartItems: [TempoViewStateItem]
+    var sections: [TempoViewStateItem] { return cartItems }
 }
 
-struct ListItemViewState: TempoViewStateItem, Equatable {
+struct CartItemViewState: TempoViewStateItem, Equatable {
     let id: Int
     let title: String
     let description: String
     let price: String
     let imageUrl: String
+    var quantityInCart: Int
     
     func transferToProduct() -> Product {
         let product = Product(id: id,
@@ -25,11 +27,11 @@ struct ListItemViewState: TempoViewStateItem, Equatable {
                               description: description,
                               imageUrl: imageUrl,
                               price: price,
-                              quantityInCart: 1)
+                              quantityInCart: quantityInCart)
         return product
     }
 }
 
-func == (lhs: ListItemViewState, rhs: ListItemViewState) -> Bool {
+func == (lhs: CartItemViewState, rhs: CartItemViewState) -> Bool {
     return lhs.id == rhs.id
 }

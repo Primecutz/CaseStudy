@@ -63,16 +63,24 @@ extension DetailCoordinator {
     }
     
     private func registerListeners() {
-        dispatcher.addObserver(AddToCartButtonPressed.self) { event in
-            // Todo: Add to shipping cart
-            let itemName = event.item.title
-            print("Added \(itemName) to shopping cart")
+        dispatcher.addObserver(AddToCartButtonPressed.self) { [weak self] event in
+            self?.addItemToCart(event.item)
         }
         
         dispatcher.addObserver(AddToListButtonPressed.self) { event in
             // Todo: Add to wish list
             let itemName = event.item.title
             print("Added \(itemName) to wish list")
+        }
+    }
+    
+    private func addItemToCart(_ item: DetailItemViewState) {
+        let product = item.transferToProduct()
+        if Product.shoppingCart.contains(product) {
+            print("\(item.title) already in cart")
+        } else {
+            Product.shoppingCart.append(product)
+            print("Add \(item.title) to shopping cart")
         }
     }
     
