@@ -14,7 +14,6 @@ struct CartItemPressed: EventType {
 
 struct UpdateQuantityPressed: EventType {
     let item: ListItemViewState
-    let add: Bool
 }
 
 struct RemoveItemPressed: EventType {

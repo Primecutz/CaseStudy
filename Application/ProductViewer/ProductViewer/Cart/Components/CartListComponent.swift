@@ -25,14 +25,29 @@ class CartListComponent: Component {
         dispatcher?.triggerEvent(CartItemPressed(item: item))
     }
     
+    func updateView(_ view: CartListView, item: ListItemViewState) {
+        view.updateItemQuantity(item)
+    }
+    
 }
 
 // MARK: CartListViewDelegate
 
 extension CartListComponent: CartListViewDelegate {
     
-    func updateItemQuantity(_ item: ListItemViewState, add: Bool) {
-        dispatcher?.triggerEvent(UpdateQuantityPressed(item: item, add: add))
+    func updateItemQuantity(_ item: ListItemViewState, view: CartListView, add: Bool) {
+        var itemToUpdate = item
+        if add {
+            itemToUpdate.quantityInCart += 1
+            updateView(view, item: itemToUpdate)
+            dispatcher?.triggerEvent(UpdateQuantityPressed(item: itemToUpdate))
+        } else if itemToUpdate.quantityInCart == 1 {
+            removeItemFromShippingCart(itemToUpdate)
+        } else {
+            itemToUpdate.quantityInCart -= 1
+            updateView(view, item: itemToUpdate)
+            dispatcher?.triggerEvent(UpdateQuantityPressed(item: itemToUpdate))
+        }
     }
     
     func removeItemFromShippingCart(_ item: ListItemViewState) {

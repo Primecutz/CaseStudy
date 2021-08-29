@@ -14,6 +14,7 @@ class CartCoordinator: TempoCoordinator {
     
     // Class Properties
     let dispatcher = Dispatcher()
+    var shoppingCart = [ListItemViewState]()
     
     // Presenters, view controllers, view state.
     var presenters = [TempoPresenterType]() {
@@ -28,12 +29,6 @@ class CartCoordinator: TempoCoordinator {
         }
     }
     
-    var shoppingCart = [ListItemViewState]() {
-        didSet {
-            updateState()
-        }
-    }
-    
     lazy var viewController: CartViewController = {
         return CartViewController.viewControllerFor(coordinator: self)
     }()
@@ -43,6 +38,17 @@ class CartCoordinator: TempoCoordinator {
         registerListeners()
     }
 
+}
+
+// MARK: Public Functions
+
+extension CartCoordinator {
+    
+    func updateState() {
+        viewState.listItems = []
+        viewState.listItems = shoppingCart
+    }
+    
 }
 
 // MARK: Private Functions
@@ -55,11 +61,6 @@ extension CartCoordinator {
         }
     }
     
-    private func updateState() {
-        viewState.listItems = []
-        viewState.listItems = shoppingCart
-    }
-    
     private func registerListeners() {
         dispatcher.addObserver(CartItemPressed.self) { [weak self] event in
             let detailCoordinator = DealsDetailDependencyInjector().setupDealsDetailDependencies()
@@ -68,16 +69,24 @@ extension CartCoordinator {
             self?.viewController.navigationController?.pushViewController(detailVC, animated: true)
         }
         
-        dispatcher.addObserver(UpdateQuantityPressed.self) { event in
-            let itemName = event.item.title
-            let addOrRemove = event.add ? "Add" : "Remove"
-            print("\(addOrRemove) one quantity from \(itemName)")
+        dispatcher.addObserver(UpdateQuantityPressed.self) { [weak self] event in
+            self?.updateShoppingCart(event.item)
         }
         
-        dispatcher.addObserver(RemoveItemPressed.self) { event in
-            let itemName = event.item.title
-            print("Remove \(itemName) from cart")
+        dispatcher.addObserver(RemoveItemPressed.self) { [weak self] event in
+            self?.removeItemFromCart(event.item)
         }
+    }
+    
+    private func updateShoppingCart(_ item: ListItemViewState) {
+        guard let indexOfItem = shoppingCart.firstIndex(of: item) else { return }
+        shoppingCart[indexOfItem] = item
+    }
+    
+    private func removeItemFromCart(_ item: ListItemViewState) {
+        guard let indexOfItem = shoppingCart.firstIndex(of: item) else { return }
+        shoppingCart.remove(at: indexOfItem)
+        updateState()
     }
     
 }

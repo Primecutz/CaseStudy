@@ -82,6 +82,7 @@ extension MainTabBarController: UITabBarControllerDelegate {
             listCoordinator.shoppingCart = cartCoordinator.shoppingCart
         case TabBarIndex.cart:
             cartCoordinator.shoppingCart = listCoordinator.shoppingCart
+            cartCoordinator.updateState()
         default:
             print("No other tabs implemented yet")
         }

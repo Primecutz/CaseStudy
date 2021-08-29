@@ -187,11 +187,15 @@ extension CartListView {
 extension CartListView {
     
     func configureViewWithItem(_ item: ListItemViewState) {
-        self.item = item
         titleLabel.text = item.title
         priceLabel.text = item.price
-        quantityLabel.text = "\(item.quantityInCart ?? 1)"
+        updateItemQuantity(item)
         imageDownloadTask = imageDownloadTask == nil ? productImageView.loadImageFrom(item.imageUrl) : nil
+    }
+    
+    func updateItemQuantity(_ item: ListItemViewState) {
+        self.item = item
+        quantityLabel.text = "\(item.quantityInCart)"
     }
     
 }
@@ -202,12 +206,12 @@ extension CartListView {
     
     @objc private func subtractButtonPressed() {
         guard let item = item else { return }
-        delegate?.updateItemQuantity(item, add: false)
+        delegate?.updateItemQuantity(item, view: self, add: false)
     }
     
     @objc private func additionButtonPressed() {
         guard let item = item else { return }
-        delegate?.updateItemQuantity(item, add: true)
+        delegate?.updateItemQuantity(item, view: self, add: true)
     }
     
     @objc private func removeButtonPressed() {
@@ -230,6 +234,6 @@ extension CartListView: ReusableView {
 }
 
 protocol CartListViewDelegate: AnyObject {
-    func updateItemQuantity(_ item: ListItemViewState, add: Bool)
+    func updateItemQuantity(_ item: ListItemViewState, view: CartListView, add: Bool)
     func removeItemFromShippingCart(_ item: ListItemViewState)
 }
