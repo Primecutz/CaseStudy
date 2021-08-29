@@ -45,7 +45,7 @@ extension CartCoordinator {
     
     func updateState() {
         viewState.cartItems = []
-        viewState.cartItems = Product.shoppingCart.map { return $0.transferToCartItemViewState() }
+        viewState.cartItems = ShoppingCart.shared.map { return $0.transferToCartItemViewState() }
     }
     
 }
@@ -83,14 +83,14 @@ extension CartCoordinator {
     
     private func updateShoppingCart(_ item: CartItemViewState) {
         let product = item.transferToProduct()
-        guard let indexOfItem = Product.shoppingCart.firstIndex(of: product) else { return }
-        Product.shoppingCart[indexOfItem] = product
+        guard let indexOfItem = ShoppingCart.shared.firstIndex(of: product) else { return }
+        ShoppingCart.shared[indexOfItem] = product
     }
     
     private func removeItemFromCart(_ item: CartItemViewState) {
         let product = item.transferToProduct()
-        guard let indexOfItem = Product.shoppingCart.firstIndex(of: product) else { return }
-        Product.shoppingCart.remove(at: indexOfItem)
+        guard let indexOfItem = ShoppingCart.shared.firstIndex(of: product) else { return }
+        ShoppingCart.shared.remove(at: indexOfItem)
         updateState()
     }
     

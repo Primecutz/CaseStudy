@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Product {
+struct Product: Equatable {
     
     let id: Int
     let title: String
@@ -16,21 +16,6 @@ class Product {
     let imageUrl: String
     let price: String
     var quantityInCart: Int
-    
-    static var shoppingCart = [Product]()
-    
-    init(id: Int, title: String, description: String, imageUrl: String, price: String, quantityInCart: Int) {
-        self.id = id
-        self.title = title
-        self.description = description
-        self.imageUrl = imageUrl
-        self.price = price
-        self.quantityInCart = quantityInCart
-    }
-    
-}
-
-extension Product: Equatable {
     
     func transferToCartItemViewState() -> CartItemViewState {
         let cartItemViewState = CartItemViewState(id: id,
@@ -46,4 +31,8 @@ extension Product: Equatable {
 
 func == (lhs: Product, rhs: Product) -> Bool {
     return lhs.id == rhs.id
+}
+
+struct ShoppingCart {
+    static var shared = [Product]()
 }

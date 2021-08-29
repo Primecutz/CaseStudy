@@ -80,10 +80,10 @@ extension ListCoordinator {
     
     private func addItemToCart(_ item: ListItemViewState) {
         let product = item.transferToProduct()
-        if Product.shoppingCart.contains(product) {
+        if ShoppingCart.shared.contains(product) {
             print("\(item.title) already in cart")
         } else {
-            Product.shoppingCart.append(product)
+            ShoppingCart.shared.append(product)
             print("Add \(item.title) to shopping cart")
         }
     }

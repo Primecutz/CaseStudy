@@ -56,6 +56,7 @@ presenter.present(NameViewState())
 // Now the label should be up to date
 label.text
 
+
 /*:
 ### Section Presenter
 
@@ -65,7 +66,6 @@ Each item and section in a `TempoViewState` is represented by a separate `TempoV
 
 Note that `sections` in this example is a computed property.  This isn't strictly necessary, but it can be helpful to follow this pattern so that you don't need to try and be clever about which sections need updating.  Tempo will calculate the changes across view states for you, so it's okay if sections are recreated every time.
 */
-
 struct CounterSection: TempoViewStateItem {
     let count: Int
 }

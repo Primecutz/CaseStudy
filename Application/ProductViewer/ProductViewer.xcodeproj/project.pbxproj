@@ -143,7 +143,7 @@
 		5B259CC81D6630E0001D755F /* ProductViewer */ = {
 			isa = PBXGroup;
 			children = (
-				CBF4596C26DB58FD00D79F33 /* ModelControllers */,
+				CBF4596C26DB58FD00D79F33 /* Models */,
 				CBE86A9126DA0ECC004528C0 /* Launch */,
 				CB22CBCF26DAC99400F42032 /* Main */,
 				5BEF080F1D663283006BF0C0 /* List */,
@@ -292,12 +292,12 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		CBF4596C26DB58FD00D79F33 /* ModelControllers */ = {
+		CBF4596C26DB58FD00D79F33 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				CBF4596A26DB58F700D79F33 /* Product.swift */,
 			);
-			path = ModelControllers;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

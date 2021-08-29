@@ -154,6 +154,7 @@ extension ProductListView {
             
             orLabel.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
             orLabel.leadingAnchor.constraint(equalTo: shipButton.trailingAnchor, constant: 5),
+            orLabel.widthAnchor.constraint(equalToConstant: 20),
             
             b2Button.centerYAnchor.constraint(equalTo: priceLabel.centerYAnchor),
             b2Button.leadingAnchor.constraint(equalTo: orLabel.trailingAnchor, constant: 5),
