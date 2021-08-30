@@ -81,6 +81,7 @@ extension ListCoordinator {
     private func addItemToCart(_ item: ListItemViewState) {
         let product = item.transferToProduct()
         if ShoppingCart.shared.contains(product) {
+            //Todo: Change to a quantity updater if already in cart
             print("\(item.title) already in cart")
         } else {
             ShoppingCart.shared.append(product)
